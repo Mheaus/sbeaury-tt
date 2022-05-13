@@ -10,14 +10,14 @@ interface ILayoutProps {
 
 const Layout = ({ children, title }: ILayoutProps) => {
   return (
-    <div className={styles.container}>
+    <div className="min-h-100 px-32">
       <Head>
         <title>{title}</title>
         <meta name="description" content="Pokedex created with Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>{children}</main>
+      <main className="min-h-screen grid gap-4 grid-cols-3">{children}</main>
 
       <footer className={styles.footer}>
         <a
