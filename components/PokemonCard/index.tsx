@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { buildUrl } from "../../utils";
+import { URL } from "../../types/enums";
 
 interface IProps {
   pokemon: any;
@@ -17,7 +19,7 @@ const PokemonCard = ({ pokemon, index }: IProps) => {
           alt={pokemon.name}
           width={150}
           height={150}
-          src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokeIndex}.png`}
+          src={buildUrl(URL.BASE_ASSET_URL, `${pokeIndex}.png`)}
         />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white capitalize">
           {pokemon.name}

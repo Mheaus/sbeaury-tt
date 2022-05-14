@@ -9,7 +9,7 @@ interface ILayoutProps {
 
 const Layout = ({ children, title }: ILayoutProps) => {
   return (
-    <div className="min-h-100 pt-32 px-32">
+    <div className="min-h-100 pt-32 px-8 md:px-32">
       <Head>
         <title>{title}</title>
         <meta name="description" content="Pokedex created with Next.js" />
