@@ -11,7 +11,7 @@ interface ILayoutProps {
 
 const Layout = ({ children, title }: ILayoutProps) => {
   return (
-    <div className="min-h-100 pt-32 px-8 md:px-32">
+    <div className="min-h-100 pt-32 px-8 md:px-32 dark:bg-gray-600">
       <Head>
         <title className="capitalize">{title}</title>
         <meta name="description" content="Pokedex created with Next.js" />
@@ -25,7 +25,7 @@ const Layout = ({ children, title }: ILayoutProps) => {
           <Link href="/">
             <button
               type="button"
-              className="text-gray-600 hover:text-gray-800 focus:outline-none font-medium p-2.5 text-center inline-flex items-center"
+              className="text-gray-600 hover:text-gray-800 dark:text-slate-300 hover:text-slate-200 focus:outline-none font-medium p-2.5 text-center inline-flex items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const Layout = ({ children, title }: ILayoutProps) => {
 
       <div className="container mx-auto min-h-screen">{children}</div>
 
-      <footer className="flex p-8 justify-center items-center">
+      <footer className="flex p-8 justify-center items-center dark:text-white">
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"

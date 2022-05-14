@@ -47,7 +47,7 @@ const Pokemon = () => {
 
       return (
         <li key={stat.stat.name} className="flex flex-col w-full md:w-1/2">
-          <div className="w-full text-gray-600 text-s text-left truncate mx-auto">
+          <div className="w-full text-gray-600 dark:text-white text-s text-left truncate mx-auto">
             <span>{stat.stat.name}: </span>
             <span>{stat.base_stat}</span>
           </div>
