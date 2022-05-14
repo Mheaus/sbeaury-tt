@@ -9,7 +9,9 @@ export const getPokemons = async (url: string) => {
 };
 
 export const getPokemonByName = async (name: string) => {
-  const { data } = await axios.get(buildUrl(URL.BASE_API_URL, name));
+  const {
+    data: { id, name: pokemonName, types, stats },
+  } = await axios.get(buildUrl(URL.BaseApiURL, name));
 
-  return data;
+  return { id, pokemonName, types, stats };
 };
