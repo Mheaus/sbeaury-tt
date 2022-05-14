@@ -28,6 +28,14 @@ const Home: NextPage = () => {
             <PokemonCard key={pokemon.name} index={index} pokemon={pokemon} />
           ))}
         </main>
+        <div className="flex justify-center w-full pb-10">
+          <button className="h-10 min-w-[105px] mr-2 text-white transition-colors duration-150 bg-gray-600 rounded-full focus:shadow-outline hover:bg-gray-700">
+            Previous
+          </button>
+          <button className="h-10 min-w-[105px] text-white transition-colors duration-150 bg-gray-600 rounded-full focus:shadow-outline hover:bg-gray-700">
+            Next
+          </button>
+        </div>
       </Layout>
     );
   }
