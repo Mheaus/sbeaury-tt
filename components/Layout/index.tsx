@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { PageTitle } from "../../types/enums";
+import { capitalize } from "../../utils";
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -13,7 +14,7 @@ const Layout = ({ children, title, isLoading }: ILayoutProps) => {
   return (
     <div className="min-h-100 pt-32 px-8 md:px-32 dark:bg-gray-600">
       <Head>
-        <title className="capitalize">{title}</title>
+        <title>{capitalize(title)}</title>
         <meta name="description" content="Pokedex created with Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
