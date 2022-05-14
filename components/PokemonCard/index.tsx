@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const PokemonCard = ({ pokemon, index }: IProps) => {
-  const pokeIndex = ("000" + (index + 1)).slice(-3);
+  const pokemonIndex = ("000" + (index + 1)).slice(-3);
 
   return (
     <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -19,7 +19,7 @@ const PokemonCard = ({ pokemon, index }: IProps) => {
           alt={pokemon.name}
           width={150}
           height={150}
-          src={buildUrl(URL.BASE_ASSET_URL, `${pokeIndex}.png`)}
+          src={buildUrl(URL.BASE_ASSET_URL, `${pokemonIndex}.png`)}
         />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white capitalize">
           {pokemon.name}

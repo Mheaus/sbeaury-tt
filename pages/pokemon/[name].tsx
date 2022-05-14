@@ -47,7 +47,7 @@ const Pokemon = () => {
         <li key={stat.stat.name} className="w-full">
           <div className="w-full md:w-1/2 bg-gray-200 rounded-full dark:bg-gray-700 mb-3 mx-auto">
             <div
-              className="bg-gray-600 dark:bg-gray-300 font-medium text-white text-s text-left truncate px-5 py-1 leading-none rounded-full animate-load"
+              className="bg-gray-600 dark:bg-gray-300 font-medium text-white text-s text-left truncate px-5 py-1 leading-none rounded-full animate-progress"
               style={{ width: width + "%" }}
             >
               {stat.stat.name}: {stat.base_stat}

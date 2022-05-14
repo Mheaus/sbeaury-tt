@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        load: {
+        progress: {
           "0%": {
             maxWidth: "0",
           },
@@ -17,7 +17,7 @@ module.exports = {
         },
       },
       animation: {
-        load: "progress 2s",
+        progress: "progress 2s",
       },
     },
   },

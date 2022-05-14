@@ -2,12 +2,10 @@ import axios from "axios";
 import { buildUrl } from "../utils";
 import { URL } from "../types/enums";
 
-export const getPokemons = async () => {
-  const {
-    data: { results },
-  } = await axios.get(buildUrl(URL.BASE_API_URL));
+export const getPokemons = async (url: string) => {
+  const { data } = await axios.get(buildUrl(url));
 
-  return results;
+  return data;
 };
 
 export const getPokemonByName = async (name: string) => {
