@@ -1,5 +1,7 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
+import { PAGE_TITLE } from "../../types/enums";
 import styles from "./Layout.module.css";
 
 interface ILayoutProps {
@@ -16,9 +18,37 @@ const Layout = ({ children, title }: ILayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <header className="flex flex-col items-center justify-center py-5 mb-10">
+        <h1 className="text-6xl dark:text-white capitalize">{title}</h1>
+
+        {title !== PAGE_TITLE.HOME ? (
+          <Link href="/">
+            <button
+              type="button"
+              className="text-gray-600 hover:text-gray-800 focus:outline-none font-medium p-2.5 text-center inline-flex items-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-10 w-10"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
+                />
+              </svg>
+            </button>
+          </Link>
+        ) : null}
+      </header>
+
       <div className="container mx-auto min-h-screen">{children}</div>
 
-      <footer className={styles.footer}>
+      <footer className="flex p-8 justify-center items-center">
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"

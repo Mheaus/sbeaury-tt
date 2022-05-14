@@ -31,46 +31,64 @@ const Pokemon = () => {
   );
 
   const renderTypes = () =>
-    pokemon.types.map((type: any) => (
+    pokemon.types.map((type: Record<string, any>) => (
       <li key={type.type.name}>
-        <span className="bg-blue-100 text-blue-800 text-lg font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+        <div className="bg-blue-100 text-blue-800 text-lg font-semibold my-2 mr-2 px-2.5 py-1 rounded dark:bg-blue-200 dark:text-blue-800">
           {type.type.name}
-        </span>
+        </div>
       </li>
     ));
 
   const renderStats = () =>
-    pokemon.stats.map((stat: any, index: any) => {
-      const width = Math.floor((stat.base_stat / 100) * 100);
+    pokemon.stats.map((stat: Record<string, any>) => {
+      const width = Math.floor((stat.base_stat / 255) * 100);
 
       return (
-        <li key={stat.stat.name} className="w-full">
-          <div className="w-full md:w-1/2 bg-gray-200 rounded-full dark:bg-gray-700 mb-3 mx-auto">
+        <li key={stat.stat.name} className="flex flex-col w-full md:w-1/2">
+          <div className="w-full text-gray-600 text-s text-left truncate mx-auto">
+            <span>{stat.stat.name}: </span>
+            <span>{stat.base_stat}</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700 mb-3 mx-auto">
             <div
-              className="bg-gray-600 dark:bg-gray-300 font-medium text-white text-s text-left truncate px-5 py-1 leading-none rounded-full animate-progress"
+              className="bg-gray-600 dark:bg-gray-300 font-medium px-5 py-2 leading-none rounded-full animate-progress"
               style={{ width: width + "%" }}
-            >
-              {stat.stat.name}: {stat.base_stat}
-            </div>
+            ></div>
           </div>
         </li>
       );
     });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Layout title={""}>
+        <div className="flex justify-center items-center w-full h-full">
+          Loading...
+        </div>
+      </Layout>
+    );
   }
 
   if (isError) {
-    return <div>Something went wrong</div>;
+    return (
+      <Layout title={""}>
+        <div className="flex justify-center items-center w-full h-full">
+          Something went wrong
+        </div>
+      </Layout>
+    );
   }
 
   if (isSuccess) {
     return (
       <Layout title={pokemonName}>
         <div className="flex justify-center">{renderImage()}</div>
-        <ul className="flex flex-row justify-center">{renderTypes()}</ul>
-        <ul className="flex flex-col items-center py-8">{renderStats()}</ul>
+        <ul className="flex flex-row flex-wrap items-center justify-center w-1/2 mx-auto">
+          {renderTypes()}
+        </ul>
+        <ul className="flex flex-col items-center w-full py-8">
+          {renderStats()}
+        </ul>
       </Layout>
     );
   }

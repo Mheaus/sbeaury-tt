@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { useQuery } from "react-query";
 import { getPokemons } from "../api";
 import { buildUrl } from "../utils";
-import { URL } from "../types/enums";
+import { URL, PAGE_TITLE } from "../types/enums";
 import Layout from "../components/Layout";
 import PokemonCard from "../components/PokemonCard";
 
@@ -24,24 +24,38 @@ const Home: NextPage = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Layout title={""}>
+        <div className="flex justify-center items-center w-full h-full">
+          Loading...
+        </div>
+      </Layout>
+    );
   }
 
   if (isError) {
-    return <div>Something went wrong</div>;
+    return (
+      <Layout title={""}>
+        <div className="flex justify-center items-center w-full h-full">
+          Something went wrong
+        </div>
+      </Layout>
+    );
   }
 
   if (isSuccess) {
     return (
-      <Layout title="Next.js Pokedex">
+      <Layout title={PAGE_TITLE.HOME}>
         <main className="grid gap-4 grid-cols-4 pb-10">
-          {pokemons.results.map((pokemon: any, index: number) => (
-            <PokemonCard
-              key={pokemon.name}
-              index={index + offset}
-              pokemon={pokemon}
-            />
-          ))}
+          {pokemons.results.map(
+            (pokemon: Record<string, any>, index: number) => (
+              <PokemonCard
+                key={pokemon.name}
+                index={index + offset}
+                pokemon={pokemon}
+              />
+            )
+          )}
         </main>
         <div className="flex justify-center w-full pb-10">
           <button
