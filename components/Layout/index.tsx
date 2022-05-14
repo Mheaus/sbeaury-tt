@@ -13,7 +13,7 @@ const Layout = ({ children, title }: ILayoutProps) => {
   return (
     <div className="min-h-100 pt-32 px-8 md:px-32">
       <Head>
-        <title>{capitalize(title)}</title>
+        <title className="capitalize">{title}</title>
         <meta name="description" content="Pokedex created with Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
