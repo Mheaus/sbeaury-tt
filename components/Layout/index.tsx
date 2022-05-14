@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { PAGE_TITLE } from "../../types/enums";
-import styles from "./Layout.module.css";
+import { PageTitle } from "../../types/enums";
+import { capitalize } from "../../utils";
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ const Layout = ({ children, title }: ILayoutProps) => {
   return (
     <div className="min-h-100 pt-32 px-8 md:px-32">
       <Head>
-        <title>{title}</title>
+        <title>{capitalize(title)}</title>
         <meta name="description" content="Pokedex created with Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -21,7 +21,7 @@ const Layout = ({ children, title }: ILayoutProps) => {
       <header className="flex flex-col items-center justify-center py-5 mb-10">
         <h1 className="text-6xl dark:text-white capitalize">{title}</h1>
 
-        {title !== PAGE_TITLE.HOME ? (
+        {title !== PageTitle.Home ? (
           <Link href="/">
             <button
               type="button"
@@ -33,11 +33,11 @@ const Layout = ({ children, title }: ILayoutProps) => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
                 />
               </svg>
@@ -54,7 +54,7 @@ const Layout = ({ children, title }: ILayoutProps) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Built with 🤟 &amp; Next.js
+          Built with &nbsp;🤟&nbsp; &amp; Next.js
         </a>
       </footer>
     </div>

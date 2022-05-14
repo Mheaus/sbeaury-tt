@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useQuery, QueryClient, dehydrate } from "react-query";
 import { getPokemonByName } from "../../api";
 import { buildUrl } from "../../utils";
-import { URL } from "../../types/enums";
+import { URL, PokemonAttributes } from "../../types/enums";
 import Layout from "../../components/Layout";
 
 const Pokemon = () => {
@@ -19,19 +19,19 @@ const Pokemon = () => {
   } = useQuery(["getPokemon", pokemonName], () =>
     getPokemonByName(pokemonName)
   );
-  const pokemonIndex = ("000" + pokemon.id).slice(-3);
+  const pokemonIndex = ("000" + pokemon?.id).slice(-3);
 
   const renderImage = () => (
     <Image
-      src={buildUrl(URL.BASE_ASSET_URL, `${pokemonIndex}.png`)}
-      alt={pokemon.name}
+      src={buildUrl(URL.BaseAssetURL, `${pokemonIndex}.png`)}
+      alt={pokemon?.pokemonName}
       width={200}
       height={200}
     />
   );
 
   const renderTypes = () =>
-    pokemon.types.map((type: Record<string, any>) => (
+    pokemon?.types.map((type: Record<string, any>) => (
       <li key={type.type.name}>
         <div className="bg-blue-100 text-blue-800 text-lg font-semibold my-2 mr-2 px-2.5 py-1 rounded dark:bg-blue-200 dark:text-blue-800">
           {type.type.name}
@@ -40,8 +40,10 @@ const Pokemon = () => {
     ));
 
   const renderStats = () =>
-    pokemon.stats.map((stat: Record<string, any>) => {
-      const width = Math.floor((stat.base_stat / 255) * 100);
+    pokemon?.stats.map((stat: Record<string, any>) => {
+      const width = Math.floor(
+        (stat.base_stat / PokemonAttributes.MaxStats) * 100
+      );
 
       return (
         <li key={stat.stat.name} className="flex flex-col w-full md:w-1/2">

@@ -3,12 +3,12 @@ import type { NextPage } from "next";
 import { useQuery } from "react-query";
 import { getPokemons } from "../api";
 import { buildUrl } from "../utils";
-import { URL, PAGE_TITLE } from "../types/enums";
+import { URL, PageTitle } from "../types/enums";
 import Layout from "../components/Layout";
 import PokemonCard from "../components/PokemonCard";
 
 const Home: NextPage = () => {
-  const [url, setUrl] = useState<string>(URL.BASE_API_URL);
+  const [url, setUrl] = useState<string>(URL.BaseApiURL);
   const [offset, setOffet] = useState(0);
 
   const {
@@ -45,8 +45,8 @@ const Home: NextPage = () => {
 
   if (isSuccess) {
     return (
-      <Layout title={PAGE_TITLE.HOME}>
-        <main className="grid gap-4 grid-cols-4 pb-10">
+      <Layout title={PageTitle.Home}>
+        <main className="grid  grid-cols-1 gap-y-4 md:grid-cols-4 md:gap-4 pb-10">
           {pokemons.results.map(
             (pokemon: Record<string, any>, index: number) => (
               <PokemonCard
