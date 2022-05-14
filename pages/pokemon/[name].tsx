@@ -63,7 +63,7 @@ const Pokemon = () => {
 
   if (isLoading) {
     return (
-      <Layout title={""}>
+      <Layout title={""} isLoading={isLoading}>
         <div className="flex justify-center items-center w-full h-full">
           Loading...
         </div>

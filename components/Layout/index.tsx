@@ -6,9 +6,10 @@ import { PageTitle } from "../../types/enums";
 interface ILayoutProps {
   children: React.ReactNode;
   title: string;
+  isLoading?: boolean;
 }
 
-const Layout = ({ children, title }: ILayoutProps) => {
+const Layout = ({ children, title, isLoading }: ILayoutProps) => {
   return (
     <div className="min-h-100 pt-32 px-8 md:px-32 dark:bg-gray-600">
       <Head>
@@ -20,7 +21,7 @@ const Layout = ({ children, title }: ILayoutProps) => {
       <header className="flex flex-col items-center justify-center py-5 mb-10">
         <h1 className="text-6xl dark:text-white capitalize">{title}</h1>
 
-        {title !== PageTitle.Home ? (
+        {title !== PageTitle.Home && !isLoading ? (
           <Link href="/">
             <button
               type="button"
