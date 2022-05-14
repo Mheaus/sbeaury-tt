@@ -25,7 +25,7 @@ const Layout = ({ children, title, isLoading }: ILayoutProps) => {
           <Link href="/">
             <button
               type="button"
-              className="text-gray-600 hover:text-gray-800 dark:text-slate-300 hover:text-slate-200 focus:outline-none font-medium p-2.5 text-center inline-flex items-center"
+              className="text-gray-600 hover:text-gray-800 dark:text-slate-200 dark:hover:text-slate-300 focus:outline-none font-medium p-2.5 text-center inline-flex items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
