@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { PageTitle } from "../../types/enums";
+import { PageTitle, RouteName } from "../../types/enums";
 import { capitalize } from "../../utils";
 
 interface ILayoutProps {
@@ -23,7 +23,7 @@ const Layout = ({ children, title, isLoading }: ILayoutProps) => {
         <h1 className="text-6xl dark:text-white capitalize">{title}</h1>
 
         {title !== PageTitle.Home && !isLoading ? (
-          <Link href="/">
+          <Link href={RouteName.Home}>
             <button
               type="button"
               className="text-gray-600 hover:text-gray-800 dark:text-slate-200 dark:hover:text-slate-300 focus:outline-none font-medium p-2.5 text-center inline-flex items-center"

@@ -1,8 +1,8 @@
-export const buildChildUrl = (...names: string[]): string => names.join("/");
+export const buildApiChildUrl = (...names: string[]): string => names.join("/");
 
-export const buildUrl = (url: string, ...names: string[]): string => {
+export const buildApiUrl = (url: string, ...names: string[]): string => {
   if (!names.length) return url;
-  return `${url}/${buildChildUrl(...names)}`;
+  return `${url}/${buildApiChildUrl(...names)}`;
 };
 
 export const capitalize = (stringToCapitalize: string) =>

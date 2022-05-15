@@ -3,8 +3,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useQuery, QueryClient, dehydrate } from "react-query";
 import { getPokemonByName } from "../../api";
-import { buildUrl } from "../../utils";
-import { URL, PokemonAttributes } from "../../types/enums";
+import { buildApiUrl } from "../../utils";
+import { ApiUrl, PokemonAttribute } from "../../types/enums";
 import Layout from "../../components/Layout";
 
 const Pokemon = () => {
@@ -23,7 +23,7 @@ const Pokemon = () => {
 
   const renderImage = () => (
     <Image
-      src={buildUrl(URL.BaseAssetURL, `${pokemonIndex}.png`)}
+      src={buildApiUrl(ApiUrl.BaseAssetURL, `${pokemonIndex}.png`)}
       alt={pokemon?.pokemonName}
       width={200}
       height={200}
@@ -42,7 +42,7 @@ const Pokemon = () => {
   const renderStats = () =>
     pokemon?.stats.map((stat: Record<string, any>) => {
       const width = Math.floor(
-        (stat.base_stat / PokemonAttributes.MaxStats) * 100
+        (stat.base_stat / PokemonAttribute.MaxStats) * 100
       );
 
       return (

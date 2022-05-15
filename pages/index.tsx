@@ -2,13 +2,13 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import { useQuery } from "react-query";
 import { getPokemons } from "../api";
-import { buildUrl } from "../utils";
-import { URL, PageTitle } from "../types/enums";
+import { buildApiUrl } from "../utils";
+import { ApiUrl, PageTitle } from "../types/enums";
 import Layout from "../components/Layout";
 import PokemonCard from "../components/PokemonCard";
 
 const Home: NextPage = () => {
-  const [url, setUrl] = useState<string>(URL.BaseApiURL);
+  const [url, setUrl] = useState<string>(ApiUrl.BaseApiURL);
   const [offset, setOffet] = useState(0);
 
   const {
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     isLoading,
     isError,
     isSuccess,
-  } = useQuery(["getPokemons", url], () => getPokemons(buildUrl(url)));
+  } = useQuery(["getPokemons", url], () => getPokemons(buildApiUrl(url)));
 
   const handleClick = (url: string, next: boolean) => {
     setUrl(url);
