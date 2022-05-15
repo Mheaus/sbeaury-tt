@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { PageTitle, RouteName } from "../../types/enums";
 import { capitalize } from "../../utils";
 
@@ -11,6 +12,8 @@ interface ILayoutProps {
 }
 
 const Layout = ({ children, title, isLoading }: ILayoutProps) => {
+  const router = useRouter();
+
   return (
     <div className="min-h-100 pt-32 px-8 md:px-32 dark:bg-gray-600">
       <Head>
@@ -22,7 +25,7 @@ const Layout = ({ children, title, isLoading }: ILayoutProps) => {
       <header className="flex flex-col items-center justify-center py-5 mb-10">
         <h1 className="text-6xl dark:text-white capitalize">{title}</h1>
 
-        {title !== PageTitle.Home && !isLoading ? (
+        {router.pathname !== RouteName.Home ? (
           <Link href={RouteName.Home}>
             <button
               type="button"
