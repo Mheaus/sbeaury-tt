@@ -36,6 +36,12 @@ node -v
 npm run dev
 ```
 
+### Running the tests
+
+```bash
+npm test
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## How to contribute 🤜 🤛
