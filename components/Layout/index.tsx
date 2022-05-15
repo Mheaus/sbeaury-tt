@@ -15,7 +15,10 @@ const Layout = ({ children, title, isLoading }: ILayoutProps) => {
   const router = useRouter();
 
   return (
-    <div className="min-h-100 pt-32 px-8 md:px-32 dark:bg-gray-600">
+    <div
+      className="min-h-100 pt-32 px-8 md:px-32 dark:bg-gray-600"
+      data-testid="layout"
+    >
       <Head>
         <title>{capitalize(title)}</title>
         <meta name="description" content="Pokedex created with Next.js" />
@@ -23,7 +26,12 @@ const Layout = ({ children, title, isLoading }: ILayoutProps) => {
       </Head>
 
       <header className="flex flex-col items-center justify-center py-5 mb-10">
-        <h1 className="text-6xl dark:text-white capitalize">{title}</h1>
+        <h1
+          className="text-6xl dark:text-white capitalize"
+          data-testid="page-title"
+        >
+          {title}
+        </h1>
 
         {router.pathname !== RouteName.Home ? (
           <Link href={RouteName.Home}>

@@ -1,8 +1,9 @@
 import type { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useQuery, QueryClient, dehydrate } from "react-query";
+import { QueryClient, dehydrate } from "react-query";
 import { getPokemonByName } from "../../api";
+import { useGetPokemonByName } from "../../hooks";
 import { buildApiUrl } from "../../utils";
 import { ApiUrl, PokemonAttribute } from "../../types/enums";
 import Layout from "../../components/Layout";
@@ -11,14 +12,9 @@ const Pokemon = () => {
   const router = useRouter();
   const pokemonName = router.query?.name ? (router.query.name as string) : "";
 
-  const {
-    isSuccess,
-    data: pokemon,
-    isLoading,
-    isError,
-  } = useQuery(["getPokemon", pokemonName], () =>
-    getPokemonByName(pokemonName)
-  );
+  const { isSuccess, pokemon, isLoading, isError } =
+    useGetPokemonByName(pokemonName);
+
   const pokemonIndex = ("000" + pokemon?.id).slice(-3);
 
   const renderImage = () => (
