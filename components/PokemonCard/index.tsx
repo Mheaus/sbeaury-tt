@@ -1,4 +1,6 @@
-import React from "react";
+// default import of react in typescript is not really what you want to do
+// https://stackoverflow.com/questions/55285737/import-as-react-from-react-vs-import-react-from-react
+import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { buildApiUrl } from "../../utils";

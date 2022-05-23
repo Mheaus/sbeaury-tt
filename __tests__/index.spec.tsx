@@ -23,9 +23,14 @@ jest.mock("../hooks/use-get-pokemons", () => ({
   useGetPokemons: jest.fn().mockImplementation(() => mockResponse),
 }));
 
+// this is very appreciated, you should keep doing this in your future technical tests
 describe("Home", () => {
   it("should properly render home page and its components", () => {
+    // here you can also do :
+    // const { container, getByTestId } = render(<Home />);
+    // and use `container` or `getByTestId` instead of `screen` in your expects below
     render(<Home />);
+
     // check if all components are rendered
     expect(screen.getByTestId("layout")).toBeInTheDocument();
     expect(screen.getByTestId("page-title")).toBeInTheDocument();

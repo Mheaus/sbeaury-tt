@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { getPokemons } from "../../api";
 import { buildApiUrl } from "../../utils";
 
+// same comment as `useGetPokemonByName`
 export const useGetPokemons = (url: string) => {
   const {
     data: pokemons,

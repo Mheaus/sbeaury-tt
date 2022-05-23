@@ -35,6 +35,9 @@ const Pokemon = () => {
       </li>
     ));
 
+  // it's very subjective, but I think render functions should be avoided as much as possible for clearly separated components declarations
+  // it's clear that your goal is to have a clean render() section but I think the reading cost of going up and down in the same function really kills the intent of doing a clear code here
+  // otherwise, your jsx is nice, nothing much to say here
   const renderStats = () =>
     pokemon?.stats.map((stat: Record<string, any>) => {
       const width = Math.floor(
@@ -69,6 +72,7 @@ const Pokemon = () => {
 
   if (isError) {
     return (
+      // this `title={""}` is not necessary, you should've set a default value for `title` in the `Layout` component itself
       <Layout title={""}>
         <div className="flex justify-center items-center w-full h-full">
           Something went wrong
@@ -94,6 +98,7 @@ const Pokemon = () => {
   return <></>;
 };
 
+// it was very nice to see this, server side logic and prefetching is not a common skill and it increases your value as a front-end on the server developper
 export const getStaticProps: GetStaticProps = async (context) => {
   const name = context.params?.name as string;
   const queryClient = new QueryClient();
